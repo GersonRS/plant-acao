@@ -5,12 +5,8 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-
-
-import modelo.Constante;
 import modelo.FaseModelo;
 import modelo.Personagem;
 import modelo.Player;
@@ -27,8 +23,8 @@ public class Fase extends JPanel {
 
 	public Personagem personagem;
 	public Point [][] faseRec = new Point[10][20];
-	public int [][]fase = new int[10][20];
-	public int [][]estaFase = new int[10][20];
+	//public int [][]fase = new int[10][20];
+	//public int [][]estaFase = new int[10][20];
 
 	public String diretorioFase;
 
@@ -46,10 +42,11 @@ public class Fase extends JPanel {
 
 	public Player player[] = new Player[2];
 	public int jogador;
+	public static int widthFase = 352, heightFase = 240;
 	//	ArrayList<BotaoFase> b = new ArrayList<BotaoFase>();
 
 	public Fase(String diretorioFase, int faseNum, int recorde) {
-		setSize(Constante.widthFase, Constante.heightFase);
+		setSize(widthFase, heightFase);
 		setLayout(null);
 		faseModelo = new FaseModelo(this);
 		faseModelo.setTilePoints();
@@ -79,7 +76,7 @@ public class Fase extends JPanel {
 	}
 
 	public Fase(String dificuldade, int recorde, String[] nome) {
-		setSize(Constante.widthFase, Constante.heightFase);
+		setSize(widthFase, heightFase);
 		setLayout(null);
 		faseModelo = new FaseModelo(this);
 		faseModelo.setTilePoints();
@@ -122,7 +119,7 @@ public class Fase extends JPanel {
 	}
 
 	public void desenharFase(int fase[][], Graphics g) {
-		g.drawImage(imgBg, 0, 0, Constante.widthFase, Constante.heightFase, null);
+		g.drawImage(imgBg, 0, 0, widthFase, heightFase, null);
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 20; j++) {
 				if(fase[i][j] != 20)
@@ -134,7 +131,7 @@ public class Fase extends JPanel {
  
 	public void paint(Graphics g) {
 		super.paint(g);
-		desenharFase(fase, g);
+		desenharFase(faseModelo.fase, g);
 		desenharQuadro(personagem.getImgPersonagem(), g, personagem.getxInicial() + personagem.getX(), personagem.getyInicial() + personagem.getY(), 16, personagem.getFrame(), 59, 57);
 
 	}

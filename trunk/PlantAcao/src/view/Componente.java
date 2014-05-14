@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-import modelo.Constante;
 
 @SuppressWarnings("serial")
 public abstract class Componente extends JPanel {
@@ -29,11 +28,13 @@ public abstract class Componente extends JPanel {
 	public ArrayList<Point> posicaoFuncao;
 	
 	public Acao arrastar;
+	public static int widthComponente = 356, heightComponente = 600;
+	public static int xComponente = 368;
 	
 
 	public Componente() {
 			
-		setSize(Constante.widthComponente, Constante.heightComponente);
+		setSize(widthComponente, heightComponente);
 		setLayout(null);
 		setVisible(true);
 		
