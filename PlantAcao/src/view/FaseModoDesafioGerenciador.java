@@ -7,9 +7,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 
-import modelo.Constante;
-
-
 public class FaseModoDesafioGerenciador extends FaseGerenciador {
 	/**
 	 * 
@@ -59,7 +56,7 @@ public class FaseModoDesafioGerenciador extends FaseGerenciador {
 		bg.setBounds(4,107,imgBg.getIconWidth(),imgBg.getIconHeight());
 		fase.setLocation(4, 283);
 
-		comp.setBounds(Constante.xComponente + 25, 0, Constante.widthComponente, Constante.heightComponente);
+		comp.setBounds(Componente.xComponente + 25, 0, Componente.widthComponente, Componente.heightComponente);
 		
 		add(faseDesafio);
 		add(bg);

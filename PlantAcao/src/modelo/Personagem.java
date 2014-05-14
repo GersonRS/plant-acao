@@ -53,9 +53,9 @@ public class Personagem {
 		
 		if(this.direcao.equalsIgnoreCase("baixo")) {
 			this.updateTresFrames(0, 1, 2);
-			if(this.getI() < 9 && (fase[this.getI() + 1][this.getJ()] == Constante.GRAMA || 
-					fase[this.getI() + 1][this.getJ()] == Constante.TERRA || fase[this.getI() + 1][this.getJ()] == Constante.TERRA_ARADA ||
-					fase[this.getI() + 1][this.getJ()] == Constante.TERRA_PLANTADA || fase[this.getI() + 1][this.getJ()] == Constante.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getI() < 9 && (fase[this.getI() + 1][this.getJ()] == FaseModelo.GRAMA || 
+					fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA || fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA_ARADA ||
+					fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA_PLANTADA || fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.y += 2;
 			}
@@ -63,9 +63,9 @@ public class Personagem {
 		} else if(this.direcao.equalsIgnoreCase("cima")) {
 			this.updateTresFrames(3, 4, 5);
 			
-			if(this.getI() > 0 && (fase[this.getI() - 1][this.getJ()] == Constante.GRAMA || 
-					fase[this.getI() - 1][this.getJ()] == Constante.TERRA || fase[this.getI() - 1][this.getJ()] == Constante.TERRA_ARADA ||
-					fase[this.getI() - 1][this.getJ()] == Constante.TERRA_PLANTADA || fase[this.getI() - 1][this.getJ()] == Constante.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getI() > 0 && (fase[this.getI() - 1][this.getJ()] == FaseModelo.GRAMA || 
+					fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA || fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA_ARADA ||
+					fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA_PLANTADA || fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.y -= 2;
 			}
@@ -74,18 +74,18 @@ public class Personagem {
 		} else if(this.direcao.equalsIgnoreCase("direita")) {
 			this.updateTresFrames(6, 7, 8);
 			
-			if(this.getJ() <= 19 && (fase[this.getI()][this.getJ() + 1] == Constante.GRAMA || 
-					fase[this.getI()][this.getJ() + 1] == Constante.TERRA || fase[this.getI()][this.getJ() + 1] == Constante.TERRA_ARADA ||
-					fase[this.getI()][this.getJ() + 1] == Constante.TERRA_PLANTADA || fase[this.getI()][this.getJ() + 1] == Constante.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getJ() <= 19 && (fase[this.getI()][this.getJ() + 1] == FaseModelo.GRAMA || 
+					fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA || fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA_ARADA ||
+					fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA_PLANTADA || fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.x += 2;
 			}
 			
 		} else if(this.direcao.equalsIgnoreCase("esquerda")) {
 			this.updateTresFrames(9, 10, 11);
-			if(this.getJ() > 0 && (fase[this.getI()][this.getJ() - 1] == Constante.GRAMA || 
-					fase[this.getI()][this.getJ() - 1] == Constante.TERRA || fase[this.getI()][this.getJ() - 1] == Constante.TERRA_ARADA ||
-					fase[this.getI()][this.getJ() - 1] == Constante.TERRA_PLANTADA || fase[this.getI()][this.getJ() - 1] == Constante.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getJ() > 0 && (fase[this.getI()][this.getJ() - 1] == FaseModelo.GRAMA || 
+					fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA || fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA_ARADA ||
+					fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA_PLANTADA || fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.x -= 2;
 			}
@@ -94,7 +94,7 @@ public class Personagem {
 	}
 	
 	public boolean estaEmLugarCorreto(int[][]fase) {
-		return (fase[this.getI()][this.getJ()] == Constante.GRAMA || fase[this.getI()][this.getJ()] == Constante.TERRA);
+		return (fase[this.getI()][this.getJ()] == FaseModelo.GRAMA || fase[this.getI()][this.getJ()] == FaseModelo.TERRA);
 		
 	}
 	

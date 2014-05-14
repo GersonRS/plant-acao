@@ -2,8 +2,6 @@ package view;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-
-import modelo.Constante;
 import modelo.Personagem;
 
 @SuppressWarnings("serial")

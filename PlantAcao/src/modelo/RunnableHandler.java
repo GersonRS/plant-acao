@@ -2,11 +2,8 @@ package modelo;
 
 import java.awt.Point;
 import java.util.ArrayList;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
-
 
 public class RunnableHandler implements Runnable {
 
@@ -38,7 +35,7 @@ public class RunnableHandler implements Runnable {
 			} else if(faseModelo.classFase.acoes.get(i).equalsIgnoreCase("andar")) {
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
 				for(int j  = 0; j < 8; j++) {
-					faseModelo.classFase.personagem.andar(faseModelo.classFase.fase);
+					faseModelo.classFase.personagem.andar(faseModelo.fase);
 					faseModelo.classFase.repaint();
 					try {
 						Thread.sleep(110);
@@ -71,7 +68,7 @@ public class RunnableHandler implements Runnable {
 					}
 				}
 
-				faseModelo.verificarFase(Constante.TERRA, 1);
+				faseModelo.verificarFase(FaseModelo.TERRA, 1);
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
 				i++;
 			} else if(faseModelo.classFase.acoes.get(i).equalsIgnoreCase("semente")) {
@@ -86,7 +83,7 @@ public class RunnableHandler implements Runnable {
 					}
 				}
 
-				faseModelo.verificarFase(Constante.TERRA_ARADA, 1);
+				faseModelo.verificarFase(FaseModelo.TERRA_ARADA, 1);
 				i++;
 			} else if(faseModelo.classFase.acoes.get(i).equalsIgnoreCase("foice")) {
 				for(int j  = 0; j < 4; j++) {
@@ -100,7 +97,7 @@ public class RunnableHandler implements Runnable {
 				}
 
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
-				if (faseModelo.verificarFase(Constante.MATO, 4)) {
+				if (faseModelo.verificarFase(FaseModelo.MATO, 4)) {
 					try {
 						faseModelo.classFase.repaint();
 						Thread.sleep(150);
@@ -108,7 +105,7 @@ public class RunnableHandler implements Runnable {
 						e.printStackTrace();
 					}
 
-					faseModelo.verificarFase(Constante.MATO_CORTADO, -Constante.MATO_CORTADO);
+					faseModelo.verificarFase(FaseModelo.MATO_CORTADO, -FaseModelo.MATO_CORTADO);
 				}
 
 				i++;
@@ -124,7 +121,7 @@ public class RunnableHandler implements Runnable {
 				}
 
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
-				if (faseModelo.verificarFase(Constante.TOCO, 4)) {
+				if (faseModelo.verificarFase(FaseModelo.TOCO, 4)) {
 					try {
 						faseModelo.classFase.repaint();
 						Thread.sleep(150);
@@ -132,7 +129,7 @@ public class RunnableHandler implements Runnable {
 						e.printStackTrace();
 					}
 
-					faseModelo.verificarFase(Constante.TOCO_QUEBRADO, -Constante.TOCO_QUEBRADO);
+					faseModelo.verificarFase(FaseModelo.TOCO_QUEBRADO, -FaseModelo.TOCO_QUEBRADO);
 				}
 
 
@@ -148,7 +145,7 @@ public class RunnableHandler implements Runnable {
 					}
 				}
 
-				if (faseModelo.verificarFase(Constante.PEDRA, 4)) {
+				if (faseModelo.verificarFase(FaseModelo.PEDRA, 4)) {
 					try {
 						faseModelo.classFase.repaint();
 						Thread.sleep(150);
@@ -156,7 +153,7 @@ public class RunnableHandler implements Runnable {
 						e.printStackTrace();
 					}
 
-					faseModelo.verificarFase(Constante.PEDRA_QUEBRADA, -Constante.PEDRA_QUEBRADA);
+					faseModelo.verificarFase(FaseModelo.PEDRA_QUEBRADA, -FaseModelo.PEDRA_QUEBRADA);
 				}
 
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
@@ -171,7 +168,7 @@ public class RunnableHandler implements Runnable {
 						e.printStackTrace();
 					}
 				}
-				faseModelo.verificarFase(Constante.TERRA_PLANTADA, 1);
+				faseModelo.verificarFase(FaseModelo.TERRA_PLANTADA, 1);
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
 				i++;
 			} else if(faseModelo.classFase.acoes.get(i).equalsIgnoreCase("f1")) {
@@ -192,7 +189,7 @@ public class RunnableHandler implements Runnable {
 			int frame = faseModelo.classFase.personagem.getFrame();
 			ArrayList<Point> pos = faseModelo.encontrarTerraPlantada();
 			for(int j  = 0; j < 4; j++) {
-				faseModelo.nascerPlantas(pos, Constante.MUDA1+j);
+				faseModelo.nascerPlantas(pos, FaseModelo.MUDA1+j);
 				faseModelo.classFase.repaint();
 				try {
 					Thread.sleep(500);

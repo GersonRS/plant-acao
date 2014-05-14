@@ -3,12 +3,6 @@ package view;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
-
-
-
-import modelo.Constante;
 import modelo.Save;
 
 
@@ -65,7 +59,7 @@ public class FaseModoPrincipalGerenciador extends FaseGerenciador {
 		});
 		
 
-		comp.setBounds(Constante.xComponente-5, 0, Constante.widthComponente, Constante.heightComponente);
+		comp.setBounds(Componente.xComponente-5, 0, Componente.widthComponente, Componente.heightComponente);
 
 		add(bg);
 		add(comp);
