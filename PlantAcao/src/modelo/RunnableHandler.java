@@ -17,6 +17,7 @@ public class RunnableHandler implements Runnable {
 	}
 
 
+	@SuppressWarnings("deprecation")
 	public void run() {
 		while(i < faseModelo.classFase.acoes.size()) {
 
@@ -35,7 +36,7 @@ public class RunnableHandler implements Runnable {
 			} else if(faseModelo.classFase.acoes.get(i).equalsIgnoreCase("andar")) {
 				faseModelo.classFase.personagem.virarParado(faseModelo.classFase.personagem.getDirecao());
 				for(int j  = 0; j < 8; j++) {
-					faseModelo.classFase.personagem.andar(faseModelo.fase);
+					faseModelo.classFase.personagem.andar(faseModelo.matrizFase);
 					faseModelo.classFase.repaint();
 					try {
 						Thread.sleep(110);

@@ -23,8 +23,6 @@ public class Fase extends JPanel {
 
 	public Personagem personagem;
 	public Point [][] faseRec = new Point[10][20];
-	//public int [][]fase = new int[10][20];
-	//public int [][]estaFase = new int[10][20];
 
 	public String diretorioFase;
 
@@ -43,13 +41,12 @@ public class Fase extends JPanel {
 	public Player player[] = new Player[2];
 	public int jogador;
 	public static int widthFase = 352, heightFase = 240;
-	//	ArrayList<BotaoFase> b = new ArrayList<BotaoFase>();
 
 	public Fase(String diretorioFase, int faseNum, int recorde) {
 		setSize(widthFase, heightFase);
 		setLayout(null);
 		faseModelo = new FaseModelo(this);
-		faseModelo.setTilePoints();
+		setTilePoints();
 		this.desafio = false;
 
 		personagem = new Personagem();
@@ -79,7 +76,7 @@ public class Fase extends JPanel {
 		setSize(widthFase, heightFase);
 		setLayout(null);
 		faseModelo = new FaseModelo(this);
-		faseModelo.setTilePoints();
+		setTilePoints();
 		this.desafio = true;
 		personagem = new Personagem();
 		imgFase = new ImageIcon(getClass().getResource("imagens/fasebg3.png"));
@@ -131,8 +128,30 @@ public class Fase extends JPanel {
  
 	public void paint(Graphics g) {
 		super.paint(g);
-		desenharFase(faseModelo.fase, g);
+		desenharFase(faseModelo.matrizFase, g);
 		desenharQuadro(personagem.getImgPersonagem(), g, personagem.getxInicial() + personagem.getX(), personagem.getyInicial() + personagem.getY(), 16, personagem.getFrame(), 59, 57);
+
+	}
+	
+	public void setTilePoints() {
+		int x = 16, y = 64;
+		int width = 16;
+		int height = 16;
+		int nx = 20;
+		int ny = 10;
+		// fase 10x20 tiles
+
+		for(int i = 0; i < ny; i++) {
+			for(int j = 0; j < nx; j++) {
+				faseRec[i][j] = new Point(x, y);
+				x += width;
+			}
+
+			x = 16;
+			y += height;
+
+
+		}
 
 	}
 

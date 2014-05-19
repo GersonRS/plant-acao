@@ -1,12 +1,11 @@
 package view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+
+import controle.ImagemComBotaoControle;
 
 public class ImagemComBotão extends JDialog {
 	
@@ -28,13 +27,7 @@ public class ImagemComBotão extends JDialog {
 		this.img.setBounds(0,0, img.getIconWidth(), img.getIconHeight());
 
 
-		x.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-			}
-		});
+		x.addActionListener(new ImagemComBotaoControle(this));
 		
 		setUndecorated(true);
 		

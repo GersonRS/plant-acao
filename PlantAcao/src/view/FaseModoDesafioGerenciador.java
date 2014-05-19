@@ -1,10 +1,11 @@
 package view;
 
 import java.awt.Font;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import controle.FaseModoDesafioGerenciadorControle;
 
 
 public class FaseModoDesafioGerenciador extends FaseGerenciador {
@@ -12,6 +13,9 @@ public class FaseModoDesafioGerenciador extends FaseGerenciador {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private FaseModoDesafioGerenciadorControle controle;
+	
 	JLabel textoJogador;
 	JLabel faseDesafio;
 	public FaseModoDesafioGerenciador(String dificuldade, String[]nome) {
@@ -36,21 +40,9 @@ public class FaseModoDesafioGerenciador extends FaseGerenciador {
 		play.setBounds(16, 530, 64, 32);
 		duvida.setBounds(152, 530, 25, 34);
 
-		
+		controle = new FaseModoDesafioGerenciadorControle(this);
 
-		fase.tv.botoes.get(1).addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-					fase.faseModelo.resetFase();
-					comp.resetar();
-					setTextoJogador(1);
-					stop.setVisible(false);
-					play.setVisible(true);
-					fase.tv.setVisible(false);
-					fase.jogador = 1;
-					
-					
-				}
-			});
+		fase.tv.botoes.get(1).addMouseListener(controle);
 
 
 		bg.setBounds(4,107,imgBg.getIconWidth(),imgBg.getIconHeight());
