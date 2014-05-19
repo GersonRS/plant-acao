@@ -6,14 +6,18 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
+import modelo.FaseModelo;
+
 import view.FaseGerenciador;
 
 public class FaseGerenciadorControle implements ActionListener {
 
 	private FaseGerenciador faseGerenciador;
+	private FaseModelo faseModelo;
 	
 	public FaseGerenciadorControle(FaseGerenciador faseGerenciador) {
 		this.faseGerenciador = faseGerenciador;
+		this.faseModelo = faseGerenciador.fase.faseModelo;
 	}
 
 
@@ -26,7 +30,7 @@ public class FaseGerenciadorControle implements ActionListener {
 
 			faseGerenciador.play.setVisible(true);
 			faseGerenciador.stop.setVisible(false);
-			faseGerenciador.fase.faseModelo.resetFase();
+			faseModelo.resetFase();
 		}
 
 		if(e.getSource()==faseGerenciador.play){
@@ -72,7 +76,7 @@ public class FaseGerenciadorControle implements ActionListener {
 							.equalsIgnoreCase(""))
 						quantidadeDeAcoes++;
 
-				faseGerenciador.fase.faseModelo.realizarAcao(comandos, comandoFuncao,
+				faseModelo.realizarAcao(comandos, comandoFuncao,
 						quantidadeDeAcoes);
 
 				faseGerenciador.play.setVisible(false);

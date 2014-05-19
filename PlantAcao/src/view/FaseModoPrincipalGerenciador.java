@@ -9,12 +9,11 @@ public class FaseModoPrincipalGerenciador extends FaseGerenciador {
 	private FaseModoPrincipralGerenciadorControle controle;
 
 	public FaseModoPrincipalGerenciador(String diretorioFase, int faseNum, int recorde) {
-		super();
+		super(1,diretorioFase,faseNum,recorde,null);
 		
 		setSize(768, 500);
 		setLocationRelativeTo(null);
 
-		fase = new Fase(diretorioFase, faseNum, recorde);
 		comp = new ComponenteModoPrincipal();
 		instanciarVoltar(this.getWidth());
 		add(this.voltar);

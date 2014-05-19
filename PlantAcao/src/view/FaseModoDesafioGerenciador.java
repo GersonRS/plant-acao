@@ -19,13 +19,11 @@ public class FaseModoDesafioGerenciador extends FaseGerenciador {
 	JLabel textoJogador;
 	JLabel faseDesafio;
 	public FaseModoDesafioGerenciador(String dificuldade, String[]nome) {
-		super();
+		super(2,dificuldade,0,0,nome);
 		
 		setSize(800, 600);
 		setLocationRelativeTo(null);
 
-		
-		fase = new Fase(dificuldade, 0, nome);
 		comp = new ComponenteModoDesafio();
 		faseDesafio = new JLabel(new ImageIcon(getClass().getResource("imagens/textoDesafio.png")));
 		faseDesafio.setBounds(10, 0, 350, 61);
