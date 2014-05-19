@@ -29,11 +29,18 @@ public abstract class FaseGerenciador extends JFrameComIcone {
 	public ImagemComBotão ações;
 	public FaseGerenciadorControle controle;
 	
-	public FaseGerenciador() {
+	public FaseGerenciador(int modo,String diretorioFase, int faseNum, int recorde,String[] nome) {
 		super("Plant-Ação");
 
 		imgBg = new ImageIcon(getClass().getResource("imagens/generico2.png"));
 
+		if(modo==1){
+			fase = new Fase(diretorioFase, faseNum, recorde);			
+		}
+		if(modo==2){
+			fase = new Fase(diretorioFase, 0, nome);
+		}
+		
 		bg = new JLabel(imgBg);
 		ações = new ImagemComBotão(new ImageIcon(Principal.class.getResource("imagens/Ações.png")));
 		ações.setVisible(false);
