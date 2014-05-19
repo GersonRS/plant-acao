@@ -1,14 +1,12 @@
 package view;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import modelo.Save;
+import controle.FaseModoPrincipralGerenciadorControle;
 
 
 @SuppressWarnings("serial")
 public class FaseModoPrincipalGerenciador extends FaseGerenciador {
 	
+	private FaseModoPrincipralGerenciadorControle controle;
 
 	public FaseModoPrincipalGerenciador(String diretorioFase, int faseNum, int recorde) {
 		super();
@@ -25,38 +23,14 @@ public class FaseModoPrincipalGerenciador extends FaseGerenciador {
 		play.setBounds(16, 430, 64, 32);
 		duvida.setBounds(152, 430, 26, 34);
 		
-		
+		controle = new FaseModoPrincipralGerenciadorControle(this);
 		
 		bg.setBounds(4,4,imgBg.getIconWidth(),imgBg.getIconHeight());
 		fase.setLocation(4, 180);
 
-		fase.tv.botoes.get(0).addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				fase.setFocusable(true);
-				fase.faseModelo.resetFase();
-				fase.tv.setVisible(false);
-				stop.setVisible(false);
-				play.setVisible(true);
-				
-			}
-		});
+		fase.tv.botoes.get(0).addMouseListener(controle);
 		
-		fase.tv.botoes.get(2).addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if(fase.getFaseNum()!=10) {
-					Save s = new Save();
-					ArrayList<String> save = s.carregarSave();
-					fase.tv.setVisible(false);
-					stop.setVisible(false);
-					play.setVisible(true);
-					fase.faseModelo.carregarFase("fase"+(fase.getFaseNum()+1)+".txt");
-					fase.setFaseNum(fase.getFaseNum()+1);
-					fase.setRecorde(Integer.parseInt(save.get((fase.getFaseNum()+1) * 3 + 1)) );
-					fase.faseModelo.resetFase();
-					comp.resetar();
-				}
-			}
-		});
+		fase.tv.botoes.get(2).addMouseListener(controle);
 		
 
 		comp.setBounds(Componente.xComponente-5, 0, Componente.widthComponente, Componente.heightComponente);
