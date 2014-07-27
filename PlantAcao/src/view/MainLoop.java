@@ -110,7 +110,7 @@ public class MainLoop implements Runnable
         {
             running = false;
             game.tearDown();
-            System.exit(0);
+//            System.exit(0);
         }
     }
 
