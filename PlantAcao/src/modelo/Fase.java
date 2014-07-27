@@ -7,35 +7,29 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import view.Fase;
 
+public class Fase {
 
-public class FaseModelo {
-
-	public static int GRAMA = 20;
-	public static int TERRA = 0;
-	public static int TERRA_ARADA = 1;
-	public static int TERRA_PLANTADA = 2;
-	public static int TERRA_PLANTADA_MOLHADA = 3;
-	public static int MUDA1 = 4;
-	public static int MUDA2 = 5;
-	public static int MUDA3 = 6;
-	public static int MUDA4 = 7;
 	
-	public static int PEDRA = 8;
-	public static int TOCO = 9;
-	public static int MATO = 10;
-
-	public static int PEDRA_QUEBRADA = 12;
-	public static int TOCO_QUEBRADO = 13;
-	public static int MATO_CORTADO = 14;
+	public static enum elementos
+	{
+		grama(20), terra(0), terra_arada(1), terra_plantada(2), terra_plantada_molhada(3), muda1(4), muda2(5), 
+		muda3(6), muda4(7), pedra(8), toco(9), mato(10), pedra_quebrada(12), toco_quebrado(13), mato_cortado(14);
+		
+		public final int valor;
+		
+		private elementos(int v) {
+			valor = v;
+		}
+	}
 	
+	public Personagem personagem;
 	public Fase classFase;
 	public int [][]matrizFase = new int[10][20];
 	public int [][]matrizEstaFase = new int[10][20];
 	public Thread thread;
 	
-	public FaseModelo(Fase fase) {
+	public Fase(Fase fase) {
 		this.classFase = fase;
 	}
 	public void gerarFaseAleatoria(String dificuldade) {
@@ -53,7 +47,7 @@ public class FaseModelo {
 
 			ArrayList<Point> posicao = gerarAleatorio();
 			for(int i = 0; i < 3; i++) {
-				matrizFase[posicao.get(i).y][posicao.get(i).x] = TERRA;
+				matrizFase[posicao.get(i).y][posicao.get(i).x] = elementos.terra.valor;
 			}
 			for(int i = 3; i < 5; i++) {
 				matrizFase[posicao.get(i).y][posicao.get(i).x] = (( int ) ( Math.random() * 3 ) ) + 8;
@@ -64,7 +58,7 @@ public class FaseModelo {
 			ArrayList<Point> posicao = gerarAleatorio();
 
 			for(int i = 0; i < 5; i++) {
-				matrizFase[posicao.get(i).y][posicao.get(i).x] = TERRA;
+				matrizFase[posicao.get(i).y][posicao.get(i).x] = elementos.terra.valor;
 			}
 
 			for(int i = 5; i < 10; i++) {
@@ -76,7 +70,7 @@ public class FaseModelo {
 			ArrayList<Point> posicao = gerarAleatorio();
 
 			for(int i = 0; i < 4; i++) {
-				matrizFase[posicao.get(i).y][posicao.get(i).x] = TERRA;
+				matrizFase[posicao.get(i).y][posicao.get(i).x] = elementos.terra.valor;
 			}
 
 			for(int i = 4; i < 15; i++) {
@@ -88,7 +82,7 @@ public class FaseModelo {
 			ArrayList<Point> posicao = gerarAleatorio();
 
 			for(int i = 0; i < 10; i++) {
-				matrizFase[posicao.get(i).y][posicao.get(i).x] = TERRA;
+				matrizFase[posicao.get(i).y][posicao.get(i).x] = elementos.terra.valor;
 			}
 
 			for(int i = 10; i < 20; i++) {
@@ -214,7 +208,7 @@ public class FaseModelo {
 		ArrayList<Point> posicao = new ArrayList<Point>();
 		for(int i = 0; i < 10; i++) {
 			for(int j = 0; j < 20; j++) {
-				if(matrizFase[i][j] == TERRA_PLANTADA_MOLHADA)
+				if(matrizFase[i][j] == elementos.terra_plantada_molhada.valor)
 					posicao.add(new Point(j, i));
 			}
 		}
@@ -260,8 +254,8 @@ public class FaseModelo {
 		for(int i = 0; i < 10; i++)
 			for(int j = 0; j < 20; j++)
 			{
-				if((matrizFase[i][j] == TERRA || matrizFase[i][j] == TERRA_ARADA || matrizFase[i][j] == TERRA_PLANTADA
-						||matrizFase[i][j] ==  MATO || matrizFase[i][j] == PEDRA || matrizFase[i][j] == TOCO) )
+				if((matrizFase[i][j] == elementos.terra.valor || matrizFase[i][j] == elementos.terra_arada.valor || matrizFase[i][j] == elementos.terra_plantada.valor
+						||matrizFase[i][j] ==  elementos.mato.valor || matrizFase[i][j] == elementos.pedra.valor || matrizFase[i][j] == elementos.toco.valor) )
 					return false;
 				else if(!classFase.personagem.estaEmLugarCorreto(matrizFase))
 					return false;
