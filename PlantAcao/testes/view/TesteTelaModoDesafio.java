@@ -10,7 +10,7 @@ import org.junit.Test;
 public class TesteTelaModoDesafio {
 
 	@Test
-	public void test() {
+	public void testTelaModoDesafio() {
 
 		Tela telaModoDesafio = new TelaModoDesafio(800, 600);
 		telaModoDesafio.setAtiva(true);
