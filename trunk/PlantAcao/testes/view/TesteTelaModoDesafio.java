@@ -33,8 +33,7 @@ public class TesteTelaModoDesafio {
 
 			botao.setEntered(true);
 			BufferedImage img2 = botao.getImagem();
-			assertNotEquals("Não atualizou a variável entered", img2,
-					img1);
+			assertNotEquals("Não atualizou a variável entered", img2, img1);
 		}
 	}
 
