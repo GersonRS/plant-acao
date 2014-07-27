@@ -61,8 +61,7 @@ public abstract class Tela {
 	protected abstract void desenharMenu();
 
 	public Image getTelaImagem() {
-		return telaImagem.getScaledInstance(larguraTela, alturaTela,
-				Image.SCALE_DEFAULT);
+		return telaImagem.getScaledInstance(larguraTela, alturaTela, Image.SCALE_DEFAULT);
 	}
 
 	public void setAtiva(boolean ativa) {
