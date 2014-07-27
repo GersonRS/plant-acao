@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class TesteClasseFase {
+public class TesteTelaFase {
 	
 	TelaFase tela = new TelaFase(600, 480);
 	
