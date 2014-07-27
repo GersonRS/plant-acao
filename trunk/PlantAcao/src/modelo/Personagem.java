@@ -1,6 +1,18 @@
+/*******************************************************************************
+ * Copyright (c) 2014 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *******************************************************************************/
 package modelo;
 
 import java.awt.Image;
+import java.util.ArrayList;
+
 import javax.swing.ImageIcon;
 
 
@@ -10,8 +22,9 @@ public class Personagem {
 	private int x, y;
 	private int xInicial, yInicial;
 	private int i, j;
-	public static String acoes[] = { "ANDAR", "BAIXO", "CIMA", "DIREITA", "ESQUERDA", "ENXADA", "SEMENTE", "REGADOR", "MACHADO", 
-		"MARTELO", "FOICE", "F1"};
+	public static ArrayList<String> acoes; /*{ "ANDAR", "BAIXO", "CIMA", "DIREITA", "ESQUERDA", "ENXADA", "SEMENTE", "REGADOR", "MACHADO", 
+		"MARTELO", "FOICE", "F1"}*/;
+	
 	
 	private ImageIcon imgIcon;
 	private Image imgPersonagem;
@@ -22,6 +35,19 @@ public class Personagem {
 	
 	public Personagem() {
 		
+		acoes = new ArrayList<String>();
+		acoes.add("ANDAR");
+		acoes.add("BAIXO");
+		acoes.add("CIMA");
+		acoes.add("DIREITA");
+		acoes.add("ESQUERDA");
+		acoes.add("ENXADA");
+		acoes.add("SEMENTE");
+		acoes.add("REGADOR");
+		acoes.add("MACHADO");
+		acoes.add("MARTELO");
+		acoes.add("FOICE");
+		acoes.add("F1");
 		
 		this.setX(0);
 		setY(0);
@@ -53,9 +79,9 @@ public class Personagem {
 		
 		if(this.direcao.equalsIgnoreCase("baixo")) {
 			this.updateTresFrames(0, 1, 2);
-			if(this.getI() < 9 && (fase[this.getI() + 1][this.getJ()] == FaseModelo.GRAMA || 
-					fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA || fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA_ARADA ||
-					fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA_PLANTADA || fase[this.getI() + 1][this.getJ()] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getI() < 9 && (fase[this.getI() + 1][this.getJ()] == Fase.elementos.grama.valor || 
+					fase[this.getI() + 1][this.getJ()] == Fase.elementos.terra.valor || fase[this.getI() + 1][this.getJ()] == Fase.elementos.terra_arada.valor ||
+					fase[this.getI() + 1][this.getJ()] == Fase.elementos.terra_plantada.valor || fase[this.getI() + 1][this.getJ()] == Fase.elementos.terra_plantada_molhada.valor)) {
 				this.moveu = true;
 				this.y += 2;
 			}
@@ -63,9 +89,9 @@ public class Personagem {
 		} else if(this.direcao.equalsIgnoreCase("cima")) {
 			this.updateTresFrames(3, 4, 5);
 			
-			if(this.getI() > 0 && (fase[this.getI() - 1][this.getJ()] == FaseModelo.GRAMA || 
-					fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA || fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA_ARADA ||
-					fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA_PLANTADA || fase[this.getI() - 1][this.getJ()] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getI() > 0 && (fase[this.getI() - 1][this.getJ()] == Fase.elementos.grama.valor || 
+					fase[this.getI() - 1][this.getJ()] == Fase.elementos.terra.valor || fase[this.getI() - 1][this.getJ()] == Fase.elementos.terra_arada.valor ||
+					fase[this.getI() - 1][this.getJ()] == Fase.elementos.terra_plantada.valor || fase[this.getI() - 1][this.getJ()] == Fase.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.y -= 2;
 			}
@@ -74,18 +100,18 @@ public class Personagem {
 		} else if(this.direcao.equalsIgnoreCase("direita")) {
 			this.updateTresFrames(6, 7, 8);
 			
-			if(this.getJ() <= 19 && (fase[this.getI()][this.getJ() + 1] == FaseModelo.GRAMA || 
-					fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA || fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA_ARADA ||
-					fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA_PLANTADA || fase[this.getI()][this.getJ() + 1] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getJ() <= 19 && (fase[this.getI()][this.getJ() + 1] == Fase.GRAMA || 
+					fase[this.getI()][this.getJ() + 1] == Fase.TERRA || fase[this.getI()][this.getJ() + 1] == Fase.TERRA_ARADA ||
+					fase[this.getI()][this.getJ() + 1] == Fase.TERRA_PLANTADA || fase[this.getI()][this.getJ() + 1] == Fase.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.x += 2;
 			}
 			
 		} else if(this.direcao.equalsIgnoreCase("esquerda")) {
 			this.updateTresFrames(9, 10, 11);
-			if(this.getJ() > 0 && (fase[this.getI()][this.getJ() - 1] == FaseModelo.GRAMA || 
-					fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA || fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA_ARADA ||
-					fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA_PLANTADA || fase[this.getI()][this.getJ() - 1] == FaseModelo.TERRA_PLANTADA_MOLHADA)) {
+			if(this.getJ() > 0 && (fase[this.getI()][this.getJ() - 1] == Fase.GRAMA || 
+					fase[this.getI()][this.getJ() - 1] == Fase.TERRA || fase[this.getI()][this.getJ() - 1] == Fase.TERRA_ARADA ||
+					fase[this.getI()][this.getJ() - 1] == Fase.TERRA_PLANTADA || fase[this.getI()][this.getJ() - 1] == Fase.TERRA_PLANTADA_MOLHADA)) {
 				this.moveu = true;
 				this.x -= 2;
 			}
@@ -94,7 +120,7 @@ public class Personagem {
 	}
 	
 	public boolean estaEmLugarCorreto(int[][]fase) {
-		return (fase[this.getI()][this.getJ()] == FaseModelo.GRAMA || fase[this.getI()][this.getJ()] == FaseModelo.TERRA);
+		return (fase[this.getI()][this.getJ()] == Fase.GRAMA || fase[this.getI()][this.getJ()] == Fase.TERRA);
 		
 	}
 	
