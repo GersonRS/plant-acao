@@ -44,7 +44,6 @@ public abstract class Tela {
 
 	protected BufferedImage carregarImagem(String image) {
 		try {
-
 			BufferedImage img = ImageIO.read(getClass().getClassLoader()
 					.getResource(image));
 
