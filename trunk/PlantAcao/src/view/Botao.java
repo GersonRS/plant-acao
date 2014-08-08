@@ -27,6 +27,10 @@ public class Botao {
 		this.imagem1 = imagem1;
 		this.imagem2 = imagem2;
 	}
+	
+	public Botao() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getPosX() {
 		return posX;
